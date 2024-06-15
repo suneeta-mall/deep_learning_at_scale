@@ -1,0 +1,13 @@
+# Ignore all files and directories
+*
+
+# Include specific files and directories
+!deep_learning_at_scale
+!pyproject.toml
+!requirements.txt
+!scripts
+!tests
+!build
+
+# Exclude compiled Python files
+*.pyc

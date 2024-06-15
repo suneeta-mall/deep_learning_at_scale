@@ -1,0 +1,41 @@
+# Ignore compiled Python files
+*.pyc
+*egg-info
+
+# Ignore log files
+*.log
+coverage
+
+# Ignore temporary files
+*.tmp
+.tmp
+.mypy_cache
+.pytest_cache
+__pycache__
+*.dat
+.coverage
+.aim
+
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+.venv
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.*.local
+
+# Ignore sensitive or private files
+secrets.json
+credentials.json
+.pip.conf

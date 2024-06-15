@@ -1,0 +1,7 @@
+*
+!deep_learning_at_scale
+!pyproject.toml
+!requirements.txt
+!scripts
+!tests
+*.pyc

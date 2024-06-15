@@ -1,0 +1,37 @@
+services:
+  deep-learning-at-scale:
+    image: deep_learning_at_scale:latest
+    environment:
+      - DOCKER_HOST
+      - _TYPER_STANDARD_TRACEBACK=1
+    # working_dir: /deep_learning_at_scale/
+    # volumes:
+    #   - ./:/deep_learning_at_scale/
+    network_mode: "host"
+
+  lint:
+    image: deep_learning_at_scale:latest
+    environment:
+      - DOCKER_HOST
+      - _TYPER_STANDARD_TRACEBACK=1
+    working_dir: /deep_learning_at_scale/
+    volumes:
+      - ./:/deep_learning_at_scale/
+    command: [ "bash", "scripts/lint.sh" ]
+
+  test:
+    image: deep_learning_at_scale:latest
+    working_dir: /deep_learning_at_scale/
+    volumes:
+      - ./:/deep_learning_at_scale/
+    command: [ "bash", "scripts/test.sh" ]
+
+  lock:
+    image: python:3.9-slim-bullseye
+    environment:
+      - DOCKER_HOST
+      - _TYPER_STANDARD_TRACEBACK=1
+    working_dir: /deep_learning_at_scale/
+    volumes:
+      - ./:/deep_learning_at_scale/
+    command: [ "bash", "/deep_learning_at_scale/scripts/do_dep_lock.sh" ]

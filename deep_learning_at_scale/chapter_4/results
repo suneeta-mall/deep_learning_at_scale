@@ -1,0 +1,56 @@
+* sta 85 without compile 
+`Trainer.fit` stopped: `max_epochs=1` reached.
+
+Epoch 0: 100%|██████████████████████████████████████████| 238/238 [13:01<00:00,  3.28s/it, v_num=3b_0, train/loss=4.790, train/iou=0.00347, val/loss=4.800, val/iou=0.00336]
+
+* fp16 85 without compile 
+`Trainer.fit` stopped: `max_epochs=1` reached.
+Epoch 0: 100%|██████████████████████████████████████████| 238/238 [11:22<00:00,  2.87s/it, v_num=03_0, train/loss=4.790, train/iou=0.00296, val/loss=4.850, val/iou=0.00305]
+
+
+* std + compile 
+
+
+Epoch 0: 100%|██████████████████████████████████████████| 238/238 [12:39<00:00,  3.19s/it, v_num=1f_0, train/loss=4.800, train/iou=0.00338, val/loss=4.810, val/iou=0.00327]
+
+
+
+* + std + mp 16 + bs 142
+
+Epoch 0: 100%|█████████████████████████████████████████| 143/143 [12:13<00:00,  5.13s/it, v_num=92_0, train/loss=4.950, train/iou=0.000802, val/loss=4.880, val/iou=0.00112]
+
+
+
+
+* + std + mp 16 + bs 142 + TensorCore
+
+torch.backends.cuda.matmul.allow_tf32 = True
+torch.set_float32_matmul_precision("medium")
+
+Epoch 0: 100%|█████████████████████████████████████████| 143/143 [12:31<00:00,  5.26s/it, v_num=7c_0, train/loss=4.950, train/iou=0.000802, val/loss=4.880, val/iou=0.00112]
+
+
+* + std + mp 16 + bs 142 +  Comppile
+
+Epoch 0: 100%|█████████████████████████████████████████| 143/143 [12:25<00:00,  5.21s/it, v_num=d1_0, train/loss=4.950, train/iou=0.000802, val/loss=4.880, val/iou=0.00112]
+
+
+## channel order 
+
+model.to(memory_format=torch.channels_last)
+input.to(memory_format=torch.channels_last)
+
+
+Epoch 0: 100%|██████████████████████████████████████████| 143/143 [12:41<00:00,  5.33s/it, v_num=1d_0, train/loss=4.960, train/iou=0.000802, val/loss=4.890, val/iou=0.0011]
+
+
+
+* * + std + mp 16 + bs 144 +  Comppile  + channel order + TensorCore
+
+Epoch 0: 100%|██████████████████████████████████████████████████████████████████████████| 141/141 [10:24<00:00,  4.43s/it, v_num=1c_0, train/loss=4.950, train/iou=0.000777S
+
+>
+
+Epoch 0: 100%|█████████████████████████████████████████| 141/141 [12:21<00:00,  5.26s/it, v_num=1c_0, train/loss=4.950, train/iou=0.000777, val/loss=4.890, val/iou=0.00104]
+
+* 8 bits bitsnadbytes
